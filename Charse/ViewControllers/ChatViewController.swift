@@ -14,7 +14,7 @@ class ChatViewController: UIViewController, UITableViewDataSource {
     @IBOutlet weak var messageField: UITextField!
     @IBOutlet weak var tableView: UITableView!
     
-    var messages: [AnyObject] = []
+    var messages: [PFObject] = []
     var refreshControl: UIRefreshControl!
     
     override func viewDidLoad() {
@@ -45,12 +45,13 @@ class ChatViewController: UIViewController, UITableViewDataSource {
     
     @objc func didPullToRefresh(_ refreshControl: UIRefreshControl){
         tableView.reloadData()
+        refreshControl.endRefreshing()
     }
     
     @objc func onTimer() {
         let query = PFQuery(className: "Message")
-        //query.addDescendingOrder("createdAt")
-        //query.includeKey("user")
+        query.addDescendingOrder("createdAt")
+        query.includeKey("user")
         
         query.findObjectsInBackground { (messages: [PFObject]?, error: Error?) -> Void in
             if error == nil {
@@ -71,16 +72,16 @@ class ChatViewController: UIViewController, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MessageCell", for: indexPath) as! MessageCell
-        let message = messages[indexPath.row] as! PFObject
-        print(message)
+        let message = messages[indexPath.row]
+        cell.message = message
         
-        if let user = message["user"] as? PFUser {
-            cell.usernameLabel.text = user.username
-        }
-        else {
-            cell.usernameLabel.text = "test"
-        }
-        cell.messageLabel.text = message["text"] as? String
+//        if let user = message["user"] as? PFUser {
+//            cell.usernameLabel.text = user.username
+//        }
+//        else {
+//            cell.usernameLabel.text = "test"
+//        }
+//        cell.messageLabel.text = message["text"] as? String
         return cell
     }
 
