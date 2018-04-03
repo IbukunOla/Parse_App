@@ -1,9 +1,9 @@
 
-# Lab 4 - *Name of App Here*
+# Lab 4 - *Charse*
 
-**Name of your app** is a Chat app using an [open source Parse](http://parseplatform.org/) backend.
+**Charse** is a Chat app using an [open source Parse](http://parseplatform.org/) backend.
 
-Time spent: **X** hours spent in total
+Time spent: **15** hours spent in total
 
 ## User Stories
 
@@ -38,7 +38,7 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://i.imgur.com/q4TQYsL.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
